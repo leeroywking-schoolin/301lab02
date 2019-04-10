@@ -32,8 +32,8 @@ Horns.prototype.render = function(){
   hornClone.find('img').attr('alt',this.keyword);
   hornClone.find('p').text(this.description);
   hornClone.removeClass('clone');
-  hornClone.addClass(this.numHorns + ' horns');
-  hornClone.attr('class', this.title);
+  hornClone.addClass(this.numHorns + 'horns');
+  hornClone.addClass(this.keyword);
 }
 
 Horns.readHorns = () => {
@@ -53,9 +53,16 @@ Horns.loadHorns = () => {
 };
 
 const renderKeys = function(key) {
-  $('#keywords').append(`<option id="${key}">${key}</option>`);
+  $('#keywords').append(`<option class="keyword-option" id="${key}">${key}</option>`);
+
 }
 
 $(() => Horns.readHorns());
+
+$('#keywords').on('click', function() {
+  let selection = $('#keywords :selected').val();
+  $('div').hide();
+  $('.' + selection).show();
+})
 
 
