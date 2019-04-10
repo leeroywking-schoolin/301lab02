@@ -23,15 +23,15 @@ Horns.prototype.render = function(){
     hornClone.html(hornHTML);
     
     hornClone.find('h2').text(this.title);
-    hornClone.find('image').attr('src',this.image_url);
-    hornClone.find('image').attr('alt',this.keyword);
+    hornClone.find('img').attr('src',this.image_url);
+    hornClone.find('img').attr('alt',this.keyword);
     hornClone.find('p').text(this.description);
     hornClone.removeClass('clone');
     hornClone.addClass(this.numHorns + ' horns');
     hornClone.attr('class', this.title);
 }
 
-const readHorns = () => {
+Horns.readHorns = () => {
 $.get('data/page-1.json','json')
     .then(data => {
        data.forEach(item => {new Horns(item)     
@@ -40,3 +40,9 @@ $.get('data/page-1.json','json')
     .then(Horns.loadHorns);
 };
 
+Horns.loadHorns = () => {
+    // console.log(Horns.allHorns)
+    Horns.allHorns.forEach(horn => horn.render())
+};
+
+$(() => Horns.readHorns())
