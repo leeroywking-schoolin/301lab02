@@ -17,7 +17,11 @@ function Horns(horn){
 
 Horns.allKeys = [];
 
+console.log(Horns.allKeys);
+
 Horns.allHorns = [];
+
+console.log(Horns.allHorns);
 
 Horns.prototype.render = function(){
   $('main').append('<div class="clone"></div>');
@@ -49,20 +53,17 @@ Horns.loadHorns = () => {
   // console.log(Horns.allHorns)
   Horns.allHorns.forEach(horn => horn.render())
   Horns.allKeys.forEach(key => renderKeys(key));
-
 };
 
 const renderKeys = function(key) {
   $('#keywords').append(`<option class="keyword-option" id="${key}">${key}</option>`);
-
 }
 
+//wait untill everything is loaded till calling read Horns
 $(() => Horns.readHorns());
 
-$('#keywords').on('click', function() {
+$('#keywords').on('change', function() {
   let selection = $('#keywords :selected').val();
   $('div').hide();
   $('.' + selection).show();
 })
-
-
