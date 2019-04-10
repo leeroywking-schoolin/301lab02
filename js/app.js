@@ -62,7 +62,11 @@ $(() => Horns.readHorns());
 $('#keywords').on('click', function() {
   let selection = $('#keywords :selected').val();
   $('div').hide();
+  console.log(selection);
+  if(selection === 'default'){$('div').show()}
+  else{
   $('.' + selection).show();
+  }
 })
 
 
