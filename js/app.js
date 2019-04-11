@@ -59,7 +59,7 @@ const renderKeys = function(key) {
 
 $(() => Horns.readHorns());
 
-$('#keywords').on('click', function() {
+$('#keywords').on('change', function() {
   let selection = $('#keywords :selected').val();
   $('div').hide();
   let sortBy = ($('#sortword :selected').val());
