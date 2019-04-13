@@ -59,10 +59,18 @@ const renderKeys = function(key) {
 
 $(() => Horns.readHorns());
 
-$('#keywords').on('click', function() {
+$('#keywords').on('change', function() {
   let selection = $('#keywords :selected').val();
   $('div').hide();
+  let sortBy = ($('#sortword :selected').val());
+  if(sortBy === 'Number of horns'){};
+  if(sortBy === 'Title'){};
+  if(selection === 'default'){$('div').show()}
+  else{
   $('.' + selection).show();
+  }
 })
-
-
+// console.log(Horns.allHorns);
+// Horns.allHorns.forEach(element)(console.log(element.keyword))
+// Horns.allHorns[].numHorns
+// Horns.allHorns.forEach(element => console.log(element));
